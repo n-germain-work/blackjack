@@ -1,0 +1,98 @@
+body {
+    width: 600px;
+    margin: auto;
+    font-family: sans-serif;
+    background-color: rgb(24, 95, 24)
+}
+
+h1 {
+    text-align: center;
+    color: white;
+}
+
+#nameP, #nameD {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+section {
+    text-align: center;
+}
+
+.dealerspace, .playerspace {
+    display: flex;
+    justify-content: space-between;
+}
+
+.playerspace {
+    justify-content: flex-end;
+}
+
+.dealer, .player {
+    width: 80%;
+    height: 250px;
+    background-color: rgb(81, 214, 81);
+    margin: 80px 0;
+    border-radius: 10px;
+    border: solid 2px black;
+}
+
+#pioche {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+#cardsleft {
+    color: white;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.deck {
+    width: 76px;
+    height: 110px;
+    background-image: url("https://cdn.discordapp.com/attachments/819152997492850708/819560387715792906/WildCard.png");
+    border-radius: 5px;
+    border: solid 1px black;
+    align-self: flex-end;
+    margin-bottom: 80px;
+}
+
+.dealer, .deck {
+    display: inline-block;
+}
+
+.card {
+    width: 76px;
+    height: 110px;
+    background-color: white;
+    border-radius: 5px;
+    border: solid 1px black;
+    display:inline-block;
+    margin: 20px 5px;
+    font-size : 2em;
+    animation : fading 2s;
+}
+
+@keyframes fading {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.score {
+    color: white;
+    font-weight:bold;
+}
+
+.redCard {
+    color : red;
+}
+
+.blackCard {
+    color : black;
+}
