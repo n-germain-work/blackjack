@@ -80,7 +80,8 @@ let hiddencard = null;
 const launchbutton = document.getElementById("launchbutton")
 const restartbutton = document.getElementById("restartbutton")
 restartbutton.disabled = true
-
+document.getElementById("cardbutton").disabled = true
+document.getElementById("stopbutton").disabled = true
 //*****************************
 
 //FONCTIONS
@@ -192,7 +193,6 @@ function aceRule(hand){
         if(hand[i][1]===11){
             hand[i][1]=1;
             break;
-            console.log("break")
         }
     }
     if(hand===handP){
@@ -214,6 +214,8 @@ function aceRule(hand){
 function launch(){
     restartbutton.disabled = false;
     launchbutton.disabled = true
+    document.getElementById("cardbutton").disabled = false
+    document.getElementById("stopbutton").disabled = false
     document.getElementById("instruction").innerHTML = "Do you want another card ?";
     play(nameP,handP);
     play(nameP,handP);
