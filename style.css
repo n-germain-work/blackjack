@@ -72,7 +72,7 @@ button {
     height: 60px;
 }
 
-#launchbutton:disabled, #restartbutton:disabled {
+#launchbutton:disabled, #restartbutton:disabled ,#cardbutton:disabled , #stopbutton:disabled {
     opacity: 0.5;
 }
 

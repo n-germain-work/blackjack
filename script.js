@@ -238,6 +238,8 @@ function stop(){
     dealerDraw();
     scoreD.innerHTML=`Score : ${pointsD}`;
     document.querySelector(".dealer").appendChild(scoreD);
+    document.getElementById("cardbutton").disabled = true
+    document.getElementById("stopbutton").disabled = true
     if(pointsP>21){
         document.getElementById("instruction").innerHTML = "You loose ! You went over 21 !";
     } else if (pointsP===21) {
