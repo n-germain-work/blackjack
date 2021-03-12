@@ -8,25 +8,33 @@
     <title>Blackjack</title>
 </head>
 <body>
-    <header class="header">
-        <h1>BLACKJACK</h1>
-    </header>
         <section class="dealerspace">
             <container id="pioche">
                 <p id="cardsleft"></p>
                 <section class="deck">
                 </section>
             </container>
-            
+
             <section class="dealer">
                 <p id="nameD">DEALER</p>
             </section>
         </section>
 
+        <section id="buttonsection">
+            <button id="launchbutton" onclick="launch()">LET'S GO</button>
+            <button id="restartbutton" onClick="window.location.reload();">RESTART</button>
+        </section>
+
+        <h3 id="instruction">Click on the button "Lets go" to launch the game</h3>
+
         <section class="playerspace">
-            <section class="player">
-                <p id="nameP">PLAYER</p>
-            </section>
+            <p id="playerbuttonspace">
+                <button id="cardbutton" onclick="newCard()">CARD</button>
+                <button id="stopbutton" onclick="stop()">STOP</button>
+            </p>
+                <section class="player">
+                    <p id="nameP">PLAYER</p>
+                </section>
         </section>
 
     <script src="script.js"></script>

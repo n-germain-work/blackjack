@@ -2,17 +2,22 @@ body {
     width: 600px;
     margin: auto;
     font-family: sans-serif;
-    background-color: rgb(24, 95, 24)
+    background-image: url("https://www.redrockresort.com/wp-content/uploads/2020/03/RR-Table-Games-07-1280x720.jpg");
 }
 
-h1 {
+h3 {
     text-align: center;
     color: white;
+    margin-top: 50px;
+    margin-left: 120px;
+    background-color: black;
+    background-image: url("");
 }
 
 #nameP, #nameD {
     font-weight: bold;
     text-transform: uppercase;
+    color: white;
 }
 
 section {
@@ -31,16 +36,55 @@ section {
 .dealer, .player {
     width: 80%;
     height: 250px;
-    background-color: rgb(81, 214, 81);
-    margin: 80px 0;
+    background-color: rgba(19, 92, 19, 0.603);
+    margin: 30px 0;
     border-radius: 10px;
-    border: solid 2px black;
+    border: solid 1.5px black;
 }
 
-#pioche {
+
+#pioche, #playerbuttonspace {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+}
+
+#playerbuttonspace {
+    margin-bottom: 130px;
+    margin-left: 0;
+    margin-right: auto;
+}
+
+button {
+    width: 76px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 5px;
+    border: solid 1px white;
+    font-size: 17px;
+    outline: none;
+    background-color: #333333;
+    color: white;
+}
+
+#launchbutton, #restartbutton {
+    width: 120px;
+    height: 60px;
+}
+
+#launchbutton:disabled, #restartbutton:disabled {
+    opacity: 0.5;
+}
+
+#instruction {
+    border-radius: 4px;
+    background-color: #000000a8;
+}
+
+#buttonsection {
+    display: flex;
+    justify-content: center;
+    padding-left: 20%;
 }
 
 #cardsleft {

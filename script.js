@@ -74,7 +74,13 @@ const scoreP = document.createElement("p");
 scoreP.classList.add("score");
 const scoreD = document.createElement("p");
 scoreD.classList.add("score");
+scoreD.setAttribute("id","scoreD")
 const cardsleft = document.getElementById("cardsleft");
+let hiddencard = null;
+const launchbutton = document.getElementById("launchbutton")
+const restartbutton = document.getElementById("restartbutton")
+restartbutton.disabled = true
+
 //*****************************
 
 //FONCTIONS
@@ -106,13 +112,16 @@ function play(player, hand) {
             cardsP[nbCardsP].classList.add("blackCard");
         }
 
-        //Crée un paragraphe dans la card pour pouvoir le flex align center
+        //Crée un paragraphe dans la card pour pouvoir centrer verticalement
         const cardvalue = document.createElement("p");
         cardsP[nbCardsP].appendChild(cardvalue)
 
         //Attribue la valeur au paragraphe créé
         cardvalue.innerHTML=hand[hand.length-1][0];
         
+        //Attribue un id unique à chaque carte
+        cardsP[nbCardsP].setAttribute("id", `cardP${hand.length}`)
+
         //calcul les points et remets la valeur des As à 1 si besoin
         pointsP += hand[hand.length-1][1];
         if (pointsP>21) {
@@ -139,9 +148,15 @@ function play(player, hand) {
         }
 
         const cardvalue = document.createElement("p");
+
+        if (hand.length===2) {
+            cardvalue.setAttribute("id","hiddenvalue");
+        }
+
         cardsD[nbCardsD].appendChild(cardvalue)
         cardvalue.innerHTML=hand[hand.length-1][0];
 
+        cardsD[nbCardsD].setAttribute("id", `cardD${hand.length}`)
 
         pointsD += hand[hand.length-1][1];
         if (pointsD>21) {
@@ -151,12 +166,24 @@ function play(player, hand) {
         document.querySelector(".dealer").appendChild(cardsD[nbCardsD]);
 
         nbCardsD++;
-
-        scoreD.innerHTML=`Score : ${pointsD}`;
-        document.querySelector(".dealer").appendChild(scoreD);
+        
+        //Score dealer remis en fin de partie
+        //scoreD.innerHTML=`Score : ${pointsD}`;
+        //document.querySelector(".dealer").appendChild(scoreD);
     }
 }
 //_____________________________________________________________________
+
+//** Pour faire tirer le dealer */
+function dealerDraw(){
+    hiddencard.style.backgroundImage = null;
+    document.getElementById("hiddenvalue").style.opacity ="1";
+    if (pointsP<21){
+        while(pointsD<17){
+            play(nameD,handD);
+        }
+    }
+}
 
 
 //** Si POINTS>21 => Cherche le 1er As et le valorise à 1 */
@@ -183,10 +210,60 @@ function aceRule(hand){
 //_____________________________________________________________________
 
 //*********************************************************************
+//FONCTIONS POUR BOUTONS
+function launch(){
+    restartbutton.disabled = false;
+    launchbutton.disabled = true
+    document.getElementById("instruction").innerHTML = "Do you want another card ?";
+    play(nameP,handP);
+    play(nameP,handP);
+    play(nameD,handD);
+    play(nameD,handD);
+    hiddencard = document.getElementById("cardD2");
+    hiddencard.style.backgroundImage = "url('https://cdn.discordapp.com/attachments/819152997492850708/819560387715792906/WildCard.png')";
+    document.getElementById("hiddenvalue").style.opacity ="0";
+    if (pointsP>= 21) {
+        stop();
+    }
+}
 
+function newCard(){
+    play(nameP,handP);
+    if (pointsP>= 21) {
+        stop();
+    }
+}
 
+function stop(){
+    dealerDraw();
+    scoreD.innerHTML=`Score : ${pointsD}`;
+    document.querySelector(".dealer").appendChild(scoreD);
+    if(pointsP>21){
+        document.getElementById("instruction").innerHTML = "You loose ! You went over 21 !";
+    } else if (pointsP===21) {
+        document.getElementById("instruction").innerHTML = "BLACKJACK !!! You won like a legend ! ";
+    } else if (pointsP===pointsD) {
+        document.getElementById("instruction").innerHTML = "This is a draw, too bad :)";
+    } else if(pointsP>pointsD) {
+        document.getElementById("instruction").innerHTML = "WOOT !!! YOU WON !";
+    } else if(pointsD>21) {
+        document.getElementById("instruction").innerHTML = "The bank went over 21 ! You won !!!";
+    } else {
+        document.getElementById("instruction").innerHTML = "YOU LOOSE ! BOOOOOH !!!";
+    }
+}
+        
+
+//*********************************************************************
 //ESSAIS CONSOLES
-play(nameP,handP)
+
+//launch()
+//newCard()
+//stop()
+
+
+
+/*play(nameP,handP)
 play(nameP,handP)
 
 
@@ -196,4 +273,4 @@ play(nameD,handD)
 console.log(deck)
 console.log(handP)
 console.log("player " + pointsP);
-console.log("dealer " + pointsD);
+console.log("dealer " + pointsD);*/
